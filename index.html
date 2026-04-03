@@ -176,7 +176,7 @@ footer{padding:24px 32px;border-top:1px solid var(--border);text-align:center;fo
       <a href="#problem">課題</a>
       <a href="#solution">機能</a>
       <a href="#demo">デモ</a>
-      <a href="#architecture">仕組み</a>
+
       <a href="#compare">比較</a>
       <a href="#cta" class="nav-cta">お問い合わせ</a>
     </div>
@@ -242,12 +242,6 @@ footer{padding:24px 32px;border-top:1px solid var(--border);text-align:center;fo
   </div>
 </section>
 
-<section class="arch-section fade-in" id="architecture">
-  <span class="section-label">Architecture</span>
-  <h2 class="section-title">システム構成</h2>
-  <p class="section-desc">Excel × AI突合エンジン × OpsGuideで、データ突合をエンドツーエンドで自動化。</p>
-  <div class="arch-diagram" id="arch-diagram"></div>
-</section>
 
 <section class="compare-section fade-in" id="compare">
   <span class="section-label">Comparison</span>
@@ -264,7 +258,7 @@ footer{padding:24px 32px;border-top:1px solid var(--border);text-align:center;fo
 <section class="cta-section fade-in" id="cta">
   <div class="cta-box">
     <h2>突合作業を、<br>もっとスマートに。</h2>
-    <p>毎月のデータ突合・照合・レポート作成を<br>AI × OpsGuideで劇的に効率化します。</p>
+    <p>毎月のデータ突合・照合・レポート作成を<br>AI × 独自自動化ツールで劇的に効率化します。</p>
     <div class="cta-actions">
       <a href="#demo" class="btn-primary">デモを体験する</a>
       <a href="#" class="btn-secondary">お問い合わせ</a>
@@ -302,7 +296,7 @@ const CONFIG = {
 
   solutions: [
     { icon: "📤", title: "ファイルをアップロードするだけ", cmd: "ドラッグ&ドロップ", desc: "Excel・CSV・PDFなど、2つのファイルを画面にドロップするだけ。フォーマット違いもAIが自動判別。" },
-    { icon: "🤖", title: "AI自動突合エンジン", cmd: "Claude AI + 名寄せ処理", desc: "項目名の揺れ・表記ゆれ・半角全角もAIが自動で名寄せ。完全一致だけでなくファジーマッチにも対応。" },
+    { icon: "🤖", title: "AI自動突合エンジン", cmd: "独自AI + 名寄せ処理", desc: "項目名の揺れ・表記ゆれ・半角全角もAIが自動で名寄せ。完全一致だけでなくファジーマッチにも対応。" },
     { icon: "🔍", title: "差分をハイライト表示", cmd: "差分ビジュアライザー", desc: "不一致箇所を色分けでハイライト。金額差・件数差・欠損レコードを一目で把握。見落としゼロ。" },
     { icon: "📊", title: "突合レポート自動生成", cmd: "PDF/Excel レポート出力", desc: "突合結果をPDF・Excelで自動出力。上長への報告もワンクリック。監査対応にもそのまま使える。" },
   ],
@@ -363,11 +357,11 @@ const CONFIG = {
     layers: [
       { label: "入力ソース", items: ["📊 Excel / CSV", "📄 PDF / 画像", "🔗 API連携（会計ソフト等）"] },
       { label: "接続", arrow: "↓ 自動取込 ↓" },
-      { label: "AI処理エンジン", box: "🤖 データ突合オートメーション（Claude AI + OpsGuide）" },
+      { label: "AI処理エンジン", box: "🤖 データ突合オートメーション（独自自動化エンジン）" },
       { label: "接続", arrow: "↓ 結果出力 ↓" },
       { label: "出力先", items: ["📊 突合レポート（PDF/Excel）", "🔔 Slack/Teams通知", "📁 クラウドストレージ保管"] },
     ],
-    footer: "Claude AI — 名寄せ・表記ゆれ・フォーマット差異を自動処理",
+    footer: "PORTAMENT独自開発 — 名寄せ・表記ゆれ・フォーマット差異を自動処理",
   },
 
   comparison: [
@@ -433,7 +427,7 @@ function runWorkflow(){const btn=document.getElementById('flow-btn');if(btn)btn.
 function buildArchDiagram(){const el=document.getElementById('arch-diagram');let html='';CONFIG.architecture.layers.forEach(layer=>{if(layer.arrow)html+=`<div class="arch-arrows">${layer.arrow}</div>`;else if(layer.box)html+=`<div class="arch-layer"><div class="arch-layer-label">${layer.label}</div><span class="arch-box">${layer.box}</span></div>`;else if(layer.items)html+=`<div class="arch-layer"><div class="arch-layer-label">${layer.label}</div><div class="arch-row">${layer.items.map(item=>`<span class="arch-chip">${item}</span>`).join('')}</div></div>`});if(CONFIG.architecture.footer)html+=`<div style="margin-top:24px;padding:10px 20px;border-radius:var(--radius-sm);background:var(--primary-50);border:1px solid var(--primary-200);display:inline-flex;align-items:center;gap:8px;font-size:12px;color:var(--primary-dark);font-weight:500"><span style="color:var(--primary)">\u25CF</span> ${CONFIG.architecture.footer}</div>`;el.innerHTML=html}
 function buildCompareTable(){document.getElementById('compare-body').innerHTML=CONFIG.comparison.map(c=>`<tr><td>${c.item}</td><td>${c.before}</td><td>${c.after}</td></tr>`).join('')}
 
-buildHeroFlow();buildProblemCards();buildSolutionCards();buildPhaseTabs();renderPhase(0);buildArchDiagram();buildCompareTable();
+buildHeroFlow();buildProblemCards();buildSolutionCards();buildPhaseTabs();renderPhase(0);buildCompareTable();
 </script>
 </body>
 </html>
